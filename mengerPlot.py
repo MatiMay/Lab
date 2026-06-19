@@ -15,9 +15,9 @@ def expand(lista, queque):
     for i in range(lista.shape[0]):
         for j in range(lista.shape[1]):
             if lista[i, j] == 1:
+                new_lista[i*3:(i+1)*3, j*3:(j+1)*3] = np.ones((3, 3)) 
                 if (i, j) not in queque:
                     queque.append((i, j))
-                new_lista[i*3:(i+1)*3, j*3:(j+1)*3] = np.ones((3, 3)) 
     return new_lista
 
 def remove(lista, queque):

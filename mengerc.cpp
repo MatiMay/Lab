@@ -15,29 +15,25 @@ pair<vector<vector<int>>, vector<pair<int,int>>> crear_lista(int f, int c) {
 	return {lista, queque};
 }
 
-vector<vector<int>> expand(vector<vector<int>> matrix, vector<pair<int,int>> queque) {
+pair<vector<vector<int>>, vector<pair<int,int>>> expand(vector<vector<int>> matrix, vector<pair<int,int>> queque) {
 	int fl=matrix.size();
 	int cl=matrix[0].size();
-	vector<vector<int>> nueva_matrix(fl*3, vector<int>(cl*3, 1));
+	vector<vector<int>> nueva_matrix(fl*3, vector<int>(cl*3, 0));
 	for(int i=0; i<fl; i++) {
 		for(int j=0; j<cl; j++) {
-			if(matrix[i][j]==0) {
-				//if(find(queque.begin(), queque.end(), make_pair(i,j))== queque.end()) {
+			if(matrix[i][j]==1) {
+				if(find(queque.begin(), queque.end(), make_pair(i,j))== queque.end()) {
 					queque.push_back({i,j});
-				//}
+				}
 				for (int row = i*3; row < (i+1)*3; row++) {
 					for (int col = j*3; col < (j+1)*3; col++) {
-						nueva_matrix[row][col] = 0;
+						nueva_matrix[row][col] = 1;
 					}
 				}
 			}
 		}
 	}
-	cout << queque.size() << endl;
-	//for (const auto& cell : queque) {
-	//	cout << "Queque: (" << cell.first << ", " << cell.second << ")" << endl;
-	//}
-	return nueva_matrix;
+	return {nueva_matrix, queque};
 }
 
 vector<vector<int>> remove(vector<vector<int>> matrix, vector<pair<int,int>> queque) {
@@ -49,15 +45,40 @@ vector<vector<int>> remove(vector<vector<int>> matrix, vector<pair<int,int>> que
 	return matrix;
 }
 
-int main() {
-	int f = 3, c = 3;
-	int ciclos = 2;
-	pair<vector<vector<int>>, vector<pair<int,int>>> lista= crear_lista(f, c);
-	vector<vector<int>> matrix = lista.first;
-	vector<pair<int,int>> queque = lista.second;
-	//vector<vector<int>> nueva_lista = expand(matrix, queque, f, c);
-	//vector<vector<int>> lista_final = remove(nueva_lista, queque);
+int mostrar(vector<vector<int>> matrix) {
+	for (const auto& fila : matrix) {
+		for (const auto& valor : fila) {
+			cout << valor << " ";
+		}
+		cout << endl;
+	}
+	return 0;
+}
+
+vector<vector<int>> computar2d(vector<vector<int>> matrix, int ciclos, vector<pair<int,int>> queque) {
 	vector<vector<int>> lista_final = matrix;
+	pair<vector<vector<int>>, vector<pair<int,int>>> result;
+
+	for (int i=0; i<ciclos; i++) {
+		result = expand(lista_final, queque);
+		lista_final = result.first;
+		queque = result.second;
+		lista_final = remove(lista_final, queque);
+		mostrar(lista_final);
+	}
+	return lista_final;
+}
+
+
+int f = 3, c = 3;
+int ciclos = 2;
+pair<vector<vector<int>>, vector<pair<int,int>>> lista= crear_lista(f, c);
+vector<vector<int>> matrix = lista.first;
+vector<pair<int,int>> queque = lista.second;
+vector<vector<int>> lista_final = matrix;
+pair<vector<vector<int>>, vector<pair<int,int>>> result;
+
+int main() {
 
 	for (auto& fila : lista_final) {
 			for (auto& valor : fila) {
@@ -65,17 +86,6 @@ int main() {
 			}
 			cout << endl;
 		}
-
-	for (int i=0; i<ciclos; i++) {
-		lista_final = expand(lista_final, queque);
-		lista_final = remove(lista_final, queque);
-		for (auto& fila : lista_final) {
-			for (auto& valor : fila) {
-				cout << valor << " ";
-			}
-			cout << endl;
-		}
-	}
-
+	computar2d(matrix, ciclos, queque);
 }
 
