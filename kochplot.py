@@ -5,10 +5,10 @@ import math
 def compute_segments(iterations):
     segments = []
     x,y = 0.0, 0.0
-    angulo = math.radians(30)
+    angulo = math.radians(120)
     for i in range(iterations):
         if i.bit_count() % 2 == 0:
-            angulo += math.radians(120)
+            angulo += math.radians(60)
         else:
             x2 = x + 10 * math.cos(angulo)
             y2 = y + 10 * math.sin(angulo)
@@ -29,4 +29,4 @@ def koch_plot(iterations):
     segments = compute_segments(iterations)
     plot(segments)
 
-koch_plot(20000)
+koch_plot(10000000)
