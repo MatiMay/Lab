@@ -4,6 +4,18 @@
 #include <algorithm>
 using namespace std;
 
+int mostrar(vector<vector<int>> matrix) {
+	cout << endl;
+	for (const auto& fila : matrix) {
+		for (const auto& valor : fila) {
+			cout << valor << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+	return 0;
+}
+
 pair<vector<vector<int>>, vector<pair<int,int>>> crear_lista(int f, int c) {
 	vector<vector<int>> lista(f, vector<int>(c, 1));
 	if (f > 1 && c > 1) lista[1][1] = 0;
@@ -45,16 +57,6 @@ vector<vector<int>> remove(vector<vector<int>> matrix, vector<pair<int,int>> que
 	return matrix;
 }
 
-int mostrar(vector<vector<int>> matrix) {
-	for (const auto& fila : matrix) {
-		for (const auto& valor : fila) {
-			cout << valor << " ";
-		}
-		cout << endl;
-	}
-	return 0;
-}
-
 vector<vector<int>> computar2d(vector<vector<int>> matrix, int ciclos, vector<pair<int,int>> queque) {
 	vector<vector<int>> lista_final = matrix;
 	pair<vector<vector<int>>, vector<pair<int,int>>> result;
@@ -69,23 +71,37 @@ vector<vector<int>> computar2d(vector<vector<int>> matrix, int ciclos, vector<pa
 	return lista_final;
 }
 
-
-int f = 3, c = 3;
-int ciclos = 2;
-pair<vector<vector<int>>, vector<pair<int,int>>> lista= crear_lista(f, c);
-vector<vector<int>> matrix = lista.first;
-vector<pair<int,int>> queque = lista.second;
-vector<vector<int>> lista_final = matrix;
-pair<vector<vector<int>>, vector<pair<int,int>>> result;
+vector<vector<vector<int>>> computar3d(vector<vector<int>> matrix2d) {
+	int tm = matrix2d.size();
+	vector<vector<vector<int>>> matrix3d(tm, vector<vector<int>>(tm, vector<int>(tm, 1)));
+	for (int i=0; i<tm; i++) {
+		for (int j=0; j<tm; j++) {
+			for (int k=0; k<tm; k++) {
+				if (matrix2d[i][j] == 0) {
+					matrix3d[i][j][k] = 0;
+					matrix3d[i][k][j] = 0;
+					matrix3d[k][i][j] = 0;
+				}
+			}
+		}
+	}
+	return matrix3d;
+}
 
 int main() {
 
-	for (auto& fila : lista_final) {
-			for (auto& valor : fila) {
-				cout << valor << " ";
-			}
-			cout << endl;
-		}
-	computar2d(matrix, ciclos, queque);
+	int f = 3, c = 3;
+	int ciclos = 3;
+	vector<vector<vector<int>>> matrix3d;
+	vector<vector<int>> matrix2d;
+	vector<pair<int,int>> queque;
+	
+	tie(matrix2d, queque) = crear_lista(f, c);
+	
+	mostrar(matrix2d);
+
+	computar2d(matrix2d, ciclos, queque);
+	
+	matrix3d = computar3d(matrix2d);
 }
 
