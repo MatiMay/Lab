@@ -103,5 +103,6 @@ int main() {
 	computar2d(matrix2d, ciclos, queque);
 	
 	matrix3d = computar3d(matrix2d);
+	
 }
 
