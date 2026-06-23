@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DGLFW_DLL -isystem C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/build/vcpkg_installed/x64-mingw-dynamic/include -g -std=gnu++17 -o CMakeFiles\\MotorVoxeles.dir\\main.cpp.obj -c C:\\Users\\mamak\\OneDrive\\Documentos\\code\\lab\\mengerc++\\main.cpp",
+  "file": "C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/main.cpp",
+  "output": "C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/build/CMakeFiles/MotorVoxeles.dir/main.cpp.obj"
+}
+]

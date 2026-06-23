@@ -1,0 +1,67 @@
+Package: vcpkg-cmake-config
+Version: 2024-05-23
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: 3d531ee25e2f289cb8f86f08e769195add4ee7f0426fdd7c96de8bcc12d1798a
+Status: install ok installed
+
+Package: vcpkg-cmake
+Version: 2024-04-23
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: ca0dabfa62ac0226fa3f120deae2cc2ce217df2cbb8afffb976cc89fe654c1d5
+Status: install ok installed
+
+Package: egl-registry
+Version: 2025-05-27
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: 2ea91fc3e6e544589b24f8334976d1f63e6d7ee337f3688fe6d827529924e66b
+Description: EGL API and Extension Registry
+Status: install ok installed
+
+Package: opengl-registry
+Version: 2026-01-26
+Depends: egl-registry
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: 28c2d0d6bc60a649c183a9163957df80960e5a37b52683b344df2b7d3032de6b
+Description: OpenGL, OpenGL ES, and OpenGL ES-SC API and Extension Registry
+Status: install ok installed
+
+Package: glad
+Version: 0.1.36
+Depends: egl-registry, opengl-registry, vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: 9ad61ef14da1ed27bf3808159957aeb6a065d9ac22ee3eab9358fda899ae3a6f
+Description: Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
+Default-Features: loader
+Status: install ok installed
+
+Package: glad
+Feature: loader
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Description: Generate loader logic.
+Status: install ok installed
+
+Package: glfw3
+Version: 3.4
+Port-Version: 1
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: 70d3d3e990cd9ee9c8fc79edfc2d2d711f2883a95d760149ad2769aa6c79558e
+Description: GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.
+Status: install ok installed
+
+Package: glm
+Version: 1.0.3
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-mingw-dynamic
+Multi-Arch: same
+Abi: 6b9937679ed7375b5c90c9a3241936f6593748334446b99c3033a0c5c1f7f314
+Description: OpenGL Mathematics (GLM)
+Status: install ok installed
+

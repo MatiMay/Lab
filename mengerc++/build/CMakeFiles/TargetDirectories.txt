@@ -1,0 +1,3 @@
+C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/build/CMakeFiles/MotorVoxeles.dir
+C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/build/CMakeFiles/edit_cache.dir
+C:/Users/mamak/OneDrive/Documentos/code/lab/mengerc++/build/CMakeFiles/rebuild_cache.dir

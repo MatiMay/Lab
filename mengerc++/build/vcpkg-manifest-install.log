@@ -1,5 +1,66 @@
-error: in triplet x64-windows: Unable to find a valid Visual Studio instance
-Could not locate a complete Visual Studio instance
-The following paths were examined for Visual Studio instances:
-  C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary/Build\vcvarsall.bat
+Detecting compiler hash for triplet x64-mingw-dynamic...
+Compiler found: C:/msys64/ucrt64/bin/x86_64-w64-mingw32-g++.exe
+The following packages will be built and installed:
+  * egl-registry:x64-mingw-dynamic@2025-05-27
+    glad[core,loader]:x64-mingw-dynamic@0.1.36
+    glfw3:x64-mingw-dynamic@3.4#1
+    glm:x64-mingw-dynamic@1.0.3
+  * opengl-registry:x64-mingw-dynamic@2026-01-26
+  * vcpkg-cmake:x64-mingw-dynamic@2024-04-23
+  * vcpkg-cmake-config:x64-mingw-dynamic@2024-05-23
+Additional packages (*) will be modified to complete this operation.
+Restored 7 package(s) from C:\Users\mamak\AppData\Local\vcpkg\archives in 671 ms. Use --debug to see more details.
+Installing 1/7 vcpkg-cmake-config:x64-mingw-dynamic@2024-05-23...
+vcpkg-cmake-config:x64-mingw-dynamic@2024-05-23 package ABI: 3d531ee25e2f289cb8f86f08e769195add4ee7f0426fdd7c96de8bcc12d1798a
+Elapsed time to handle vcpkg-cmake-config:x64-mingw-dynamic: 6.46 ms
+Installing 2/7 vcpkg-cmake:x64-mingw-dynamic@2024-04-23...
+vcpkg-cmake:x64-mingw-dynamic@2024-04-23 package ABI: ca0dabfa62ac0226fa3f120deae2cc2ce217df2cbb8afffb976cc89fe654c1d5
+Elapsed time to handle vcpkg-cmake:x64-mingw-dynamic: 6.54 ms
+Installing 3/7 egl-registry:x64-mingw-dynamic@2025-05-27...
+egl-registry:x64-mingw-dynamic@2025-05-27 package ABI: 2ea91fc3e6e544589b24f8334976d1f63e6d7ee337f3688fe6d827529924e66b
+Elapsed time to handle egl-registry:x64-mingw-dynamic: 7.88 ms
+Installing 4/7 opengl-registry:x64-mingw-dynamic@2026-01-26...
+opengl-registry:x64-mingw-dynamic@2026-01-26 package ABI: 28c2d0d6bc60a649c183a9163957df80960e5a37b52683b344df2b7d3032de6b
+Elapsed time to handle opengl-registry:x64-mingw-dynamic: 10.9 ms
+Installing 5/7 glad[core,loader]:x64-mingw-dynamic@0.1.36...
+glad[core,loader]:x64-mingw-dynamic@0.1.36 package ABI: 9ad61ef14da1ed27bf3808159957aeb6a065d9ac22ee3eab9358fda899ae3a6f
+Elapsed time to handle glad:x64-mingw-dynamic: 8.44 ms
+Installing 6/7 glfw3:x64-mingw-dynamic@3.4#1...
+glfw3:x64-mingw-dynamic@3.4#1 package ABI: 70d3d3e990cd9ee9c8fc79edfc2d2d711f2883a95d760149ad2769aa6c79558e
+Elapsed time to handle glfw3:x64-mingw-dynamic: 8.94 ms
+Installing 7/7 glm:x64-mingw-dynamic@1.0.3...
+glm:x64-mingw-dynamic@1.0.3 package ABI: 6b9937679ed7375b5c90c9a3241936f6593748334446b99c3033a0c5c1f7f314
+Elapsed time to handle glm:x64-mingw-dynamic: 50.4 ms
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+Packages installed in this vcpkg installation declare the following licenses:
+Apache-2.0
+MIT
+Zlib
+glad provides CMake targets:
 
+  # this is heuristically generated, and may not be correct
+  find_package(glad CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE glad::glad)
+
+glfw3 provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(glfw3 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE glfw)
+
+glfw3 provides pkg-config modules:
+
+  # A multi-platform library for OpenGL, window and input
+  glfw3
+
+The package glm provides CMake targets:
+
+    find_package(glm CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE glm::glm)
+
+    # Or use the header-only version
+    find_package(glm CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE glm::glm-header-only)
+
+All requested installations completed successfully in: 104 ms
